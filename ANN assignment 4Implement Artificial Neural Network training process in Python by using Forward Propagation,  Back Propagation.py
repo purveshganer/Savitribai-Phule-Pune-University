@@ -20,26 +20,21 @@ class NeuralNetwork:
         return x * (1 - x)
 
     def forward_propagation(self, X):
-        # Input to hidden layer
         self.hidden_input = np.dot(X, self.weights_input_hidden) + self.bias_hidden
         self.hidden_output = self.sigmoid(self.hidden_input)
 
-        # Hidden layer to output
         self.output_input = np.dot(self.hidden_output, self.weights_hidden_output) + self.bias_output
         self.output = self.sigmoid(self.output_input)
 
         return self.output
 
     def backpropagation(self, X, y):
-        # Calculate output layer error
         error_output = y - self.output
         delta_output = error_output * self.sigmoid_derivative(self.output)
 
-        # Calculate hidden layer error
         error_hidden = delta_output.dot(self.weights_hidden_output.T)
         delta_hidden = error_hidden * self.sigmoid_derivative(self.hidden_output)
 
-        # Update weights and biases
         self.weights_hidden_output += self.hidden_output.T.dot(delta_output) * self.learning_rate
         self.bias_output += np.sum(delta_output, axis=0, keepdims=True) * self.learning_rate
         self.weights_input_hidden += X.T.dot(delta_hidden) * self.learning_rate
@@ -47,14 +42,11 @@ class NeuralNetwork:
 
     def train(self, X, y, epochs):
         for epoch in range(epochs):
-            # Forward propagation
             output = self.forward_propagation(X)
-            # Backpropagation
             self.backpropagation(X, y)
-
-# XOR function inputs and outputs
-X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input
-y = np.array([[0], [1], [1], [0]])  # Output
+]
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
 
 # Initialize neural network
 input_size = 2
