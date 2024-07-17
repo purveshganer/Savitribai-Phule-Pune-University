@@ -17,29 +17,26 @@ class Perceptron:
                 self.weights[1:] += self.learning_rate * (label - prediction) * inputs
                 self.weights[0] += self.learning_rate * (label - prediction)
 
-# Define training data and labels for even and odd numbers (in ASCII)
 training_data = np.array([
-    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],  # ASCII for 0
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],  # ASCII for 2
-    [0, 0, 0, 0, 0, 1, 0, 0, 1, 0],  # ASCII for 4
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],  # ASCII for 6
-    [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],  # ASCII for 8
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],  # ASCII for 1
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1],  # ASCII for 3
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],  # ASCII for 5
-    [0, 1, 1, 0, 0, 0, 0, 0, 1, 1],  # ASCII for 7
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+    [0, 1, 1, 0, 0, 0, 0, 0, 1, 1],
     [0, 1, 0, 0, 0, 1, 0, 0, 0, 1]   # ASCII for 9
 ])
-labels = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])  # 1 for even, 0 for odd
+labels = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
 
-# Initialize and train the perceptron
 perceptron = Perceptron(input_size=10)
 perceptron.train(training_data, labels)
 
-# Test the perceptron
 test_cases = [
-    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],  # ASCII for 0 (even)
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],  # ASCII for 2 (even)
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
     [0, 1, 0, 0, 0, 1, 0, 0, 0, 1],  # ASCII for 9 (odd)
     [0, 1, 1, 0, 0, 0, 0, 0, 1, 1]   # ASCII for 7 (odd)
 ]
