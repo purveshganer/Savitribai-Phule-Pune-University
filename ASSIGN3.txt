@@ -1,0 +1,173 @@
+
+def inut():
+    rows=int(input("\nEnter the number of rows:"))
+    cols=int(input("Enter the number of colummns:"))
+    mat1=[]
+   # print("Enter the Element :")
+    for i in range(rows):
+        colms=[]
+        print("\nEnter the row Elements:")
+        for j in range(cols):
+            colms.append(int(input()))
+        mat1.append(colms) 
+
+    for i in range(rows):
+        print("")
+        for j in range(cols):
+            print(mat1[i][j],end = " ")
+    print("")
+    return mat1
+    mat2=[]
+'''
+    print("Enter the Elements for 2nd matrix:")
+    for i in range(rows):
+        colms1=[]
+        for j in range(cols):
+            colms1.append(int(input()))
+        mat2.append(colms1) 
+
+    print(mat2)
+   ,mat2
+'''
+#addition
+def addi():
+    
+    mat1=inut()
+    mat2=inut()
+
+    rows1=len(mat1)
+    cols1=len(mat1[0])
+    rows2=len(mat2)
+    cols2=len(mat2[0])
+
+    if rows1!=rows2 or cols1!=cols2:
+        print("ARITHMETIC ERROR.Enter correct number of rows and columns.")     
+    else:    
+        add_mat=[]
+                
+        for g in range(rows1):
+                    li=[]
+                    for f in range(len(mat1[0])):
+                        
+                        li.append(mat1[g][f]+mat2[g][f])  
+
+                    add_mat.append(li)
+        print("Addition of Matrix is:\n")    
+        for i in range(rows1):
+            print("")
+            for j in range(cols1):
+                print(add_mat[i][j],end = " ")
+        print("")        
+
+def subt():         
+        
+    mat1=inut()
+    mat2=inut()
+
+    rows1=len(mat1)
+    cols1=len(mat1[0])
+    rows2=len(mat2)
+    cols2=len(mat2[0])
+
+    if rows1!=rows2 or cols1!=cols2:
+        print("ARITHMETIC ERROR.Enter correct number of rows and columns.")
+    else:    
+        sub_mat=[]
+                
+        for q in range(rows1):
+                    lo=[]
+                    for w in range(len(mat1[0])):
+                        lo.append(mat1[q][w]-mat2[q][w])  
+                    sub_mat.append(lo)
+
+        print("Subtraction of Matrix is:\n")
+        for i in range(rows1):
+            print("")
+            for j in range(cols1):
+                print(sub_mat[i][j],end = " ")
+        print("")        
+
+def transp():
+    
+    mat1=inut()
+    #mat2=inut()
+
+    rows1=len(mat1)
+    cols1=len(mat1[0])
+    '''rows2=len(mat2)
+    cols2=len(mat2[0])'''
+
+
+    trans_mat1=[]
+    trans_mat2=[]
+
+    for q1 in range(cols1):
+                le=[]
+                lo1=[]
+                for w1 in range(rows1):
+                    le.append(mat1[w1][q1]) 
+                    #lo1.append(mat2[w1][q1])
+                trans_mat1.append(le)
+                '''trans_mat2.append(lo1)'''
+
+    print("Transpose of Matrix is:")#,"\nTranspose of 2nd Matrix is:",trans_mat2)     
+    for i in range(len(trans_mat1)):
+            print("")
+            for j in range(len(trans_mat1[0])):
+                print(trans_mat1[i][j],end = " ")   
+    print("")            
+
+
+def multi():
+    
+    mat1=inut()
+    mat2=inut()
+
+    rows1=len(mat1)
+    cols1=len(mat1[0])
+    rows2=len(mat2)
+    cols2=len(mat2[0])
+
+    if cols1!=rows2:
+        print("ARITHMETIC ERROR.Enter correct number of rows and columns.")
+    else: 
+
+        li2=[]
+        for g1 in range(rows1):
+                    li1=[]
+                    for f1 in range(len(mat2[0])):
+                        sum=0
+                        for f2 in range(cols1):
+                            sum += mat1[g1][f2]*mat2[f2][f1]
+                        
+                        li1.append(sum)
+
+                    li2.append(li1)
+
+        print("Multiplication of Matrix is:")  
+        for i in range(rows1):
+            print("")
+            for j in range(cols2):
+                print(li2[i][j],end = " ") 
+        print("")
+
+
+
+opt = 1
+while (0 < opt < 5):
+    print(
+        "**************MENU******************\n 1.Addition of matrix:\n2.Subraction of matrix\n3.Multiplication of matrix \n4.Transpose of matrix:\n5.Exit")
+    opt = int(input("enter your choice:"))
+
+    if opt == 1:
+        print(addi())
+    elif opt == 2:
+        print(subt())
+    elif opt == 3:
+        print(multi())
+    elif opt == 4:
+        print(transp())
+    elif opt == 5:
+        print("Exiting")
+    else:
+        print("enter correct number")
