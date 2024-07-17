@@ -29,12 +29,10 @@ class ARTNetwork:
                 self.W = self.normalize(self.W)
         return False
 
-# Example usage:
 input_size = 4
 vigilance_parameter = 0.9
 art_net = ARTNetwork(input_size, vigilance_parameter)
 
-# Training data
 data = [
     [0, 0, 0, 0],
     [0, 0, 1, 1],
@@ -46,11 +44,10 @@ data = [
     [1, 1, 1, 1]
 ]
 
-# Training the ART network
 for pattern in data:
     art_net.learn(pattern)
+]
 
-# Test the ART network
 test_patterns = [
     [0, 0, 1, 1],
     [1, 1, 1, 1],
