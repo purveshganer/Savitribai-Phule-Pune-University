@@ -18,26 +18,21 @@ class Perceptron:
         summation = np.dot(X, self.weights[1:]) + self.weights[0]
         return np.where(summation >= 0, 1, 0)
 
-# Generate random data points for two classes
 np.random.seed(0)
 num_samples = 100
 class_0 = np.random.normal(loc=[2, 2], scale=[1, 1], size=(num_samples, 2))
 class_1 = np.random.normal(loc=[6, 6], scale=[1, 1], size=(num_samples, 2))
 
-# Concatenate the data points and create labels
 X = np.vstack([class_0, class_1])
 y = np.hstack([np.zeros(num_samples), np.ones(num_samples)])
 
-# Create and train the perceptron
 perceptron = Perceptron(learning_rate=0.1, epochs=1000)
 perceptron.train(X, y)
 
-# Plot the data points for each class
 plt.figure(figsize=(8, 6))
 plt.scatter(class_0[:, 0], class_0[:, 1], color='blue', label='Class 0')
 plt.scatter(class_1[:, 0], class_1[:, 1], color='red', label='Class 1')
 
-# Plot the decision boundary
 w0, w1, w2 = perceptron.weights
 slope = -w1 / w2
 intercept = -w0 / w2
